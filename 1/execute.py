@@ -9,6 +9,6 @@ heater.addObserver(drinkingObsv)
 
 for i in range(35, 103):
     if i > 100:
-        print(f"你８７喔，水都超過100度了啦怎麼可能會超過100度啦")
+        print("你８７喔，水溫怎麼可能會超過100度啦")
         break
     heater.setTemperature(i)

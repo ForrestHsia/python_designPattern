@@ -31,15 +31,19 @@ class WashingMode(Observer):
         self.__calling = 0
     
     def update(self, waterHeater):
-        
         if waterHeater.getTemperature() >= 40 and waterHeater.getTemperature() < 50:
             if self.__calling < 4:
                 self.__calling += 1
                 print("可以洗澡了！！趕快滾去洗！！！！")
-        elif waterHeater.getTemperature() >= 50 and waterHeater.getTemperature() < 100:
-            if self.__calling < 7:
+            elif self.__calling >= 4:
+                self.__calling += 1
+                print("叫很多遍了！！趕快去洗澡！！！！")
+        elif waterHeater.getTemperature() >= 50 and waterHeater.getTemperature() < 70:
+            if self.__calling < 20:
                 self.__calling += 1
                 print("這麼燙沒辦法洗啦！！！！！")
+        elif waterHeater.getTemperature() >= 70:
+            print(f"幹真的太燙了啦{waterHeater.getTemperature()}度了誒！！！！！")
             
             
 
