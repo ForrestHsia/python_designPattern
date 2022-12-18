@@ -1,6 +1,6 @@
 from abc import ABCMeta, abstractmethod
 
-class Oberserver(metaclass=ABCmeta):
+class Observer(metaclass=ABCMeta):
     @abstractmethod
     def update(self, observable, object):
         pass
@@ -10,10 +10,10 @@ class Observable:
     def __init__(self):
        self.__observers = []
     
-    def addObservers(self, observer):
+    def addObserver(self, observer):
         self.__observers.append(observer)
         
-    def removeObservers(self, observer):
+    def removeObserver(self, observer):
         self.__observers.remove(observer)
     
     def notifyObservers(self, object = 0):

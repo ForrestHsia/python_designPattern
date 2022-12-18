@@ -1,4 +1,5 @@
 import config
+from abstract import Observer, Observable
 
 heater = config.WaterHeater()
 washingObsv = config.WashingMode()
