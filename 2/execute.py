@@ -14,10 +14,7 @@ def testState():
     water.behavior()   
     
     water.riseTemperature(37)
-    water.behavior()
-    
-   
-    
+    water.behavior() 
     
     
 testState()
