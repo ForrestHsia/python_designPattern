@@ -1,4 +1,5 @@
-import xml.etree.ElementTree as etree, json
+import xml.etree.ElementTree as etree, json, os
+
 
 class JSONConnector:
     def __init__(self, filePath):
@@ -36,18 +37,28 @@ def connect_to(filePath):
     
     return factory
 
+def check_path(filePath):
+    if os.path.exists(filePath):
+        return filePath
+    else:
+        return "File Path Not Exist"
+    
+# 透過介面產生工廠
 def main():
-    sq3_factory = connect_to("../testData/test.sq3")
-    xml_factory = connect_to("../testData/test.sq3.xml")
-    json_factory = connect_to("../testData/players.json")
+    sq3_factory = connect_to(check_path("./testData/test.sq3"))
+    print()
+    
+    xml_factory = connect_to(check_path("./testData/test.sq3.xml"))
+    json_factory = connect_to(check_path("./testData/players.json"))
     
     xml_data = xml_factory.parsed_data
     print(xml_data)
     
     json_data = json_factory.parsed_data
-    print('found: {} Lamigo players'.format(len(json_data)))
-    for players in json_data:
-        
-    
+    print('found: {} players'.format(len(json_data)))
 
-main()
+
+# 直接手動產生工廠
+testJson = JSONConnector("./testData/players.json")
+testJsonData = testJson.parsed_data
+print(testJsonData)
