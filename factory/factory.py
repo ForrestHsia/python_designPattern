@@ -57,6 +57,8 @@ def main():
     json_data = json_factory.parsed_data
     print('found: {} players'.format(len(json_data)))
 
+if __name__ == "__main__":
+    main()
 
 # 直接手動產生工廠
 testJson = JSONConnector("./testData/players.json")
