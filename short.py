@@ -1,3 +1,5 @@
+# TODO 短網址產生器練習
+
 ALPHABET = base62String()
 def base62_encode(num, alphabet=ALPHABET):
     """10進制轉62進制"""
@@ -22,4 +24,4 @@ def base62String():
         alphabet += chr(i)  
     return alphabet
 a = base62String()
-print(a)
+print(a) 
