@@ -72,3 +72,34 @@ class Waiter:
     
     def contruct_pizza(self, builder):
         self.builder = builder
+        [step() for step in (builder.prepare_dough, builder.add_source, builder.add_topping, builder.bake)]
+    
+    @property
+    def pizza(self):
+        return self.builder.pizza
+    
+def validate_style(builders):
+    valid_input = False
+    try:
+        pizza_style = input("choose one, [m]argarita or [c]reamyBacon?")
+        builder = builders[pizza_style]()
+        valid_input = True
+    except KeyError as err:
+        print("hey, fucker, we have only two options, [m]argarita and [c]reamyBacon.")
+        return(valid_input, None)
+    return (valid_input, builder)
+
+def main():
+    builders = dict(m=MargaritaBuilder,c= CreamyBaconBuilder)
+    valid_input = False
+    while not valid_input:
+        valid_input, builder = validate_style(builders)
+    print()
+    waiter = Waiter()
+    waiter.contruct_pizza(builder)
+    pizza = waiter.pizza
+    print()
+    print(f"enjoy your {pizza}!!")
+    
+if __name__ == '__main__':
+    main()
